@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci4hki4sjvvie"]
+
+[ext_resource type="Texture2D" uid="uid://cos3eqn6vsjdc" path="res://Assets/laser.png" id="1_xv4do"]
+[ext_resource type="PackedScene" uid="uid://dg77i475oox6j" path="res://Scenes/effect_creator.tscn" id="2_4hgou"]
+[ext_resource type="PackedScene" uid="uid://c1m20076khgq3" path="res://Scenes/hit_effect.tscn" id="3_26kew"]
+[ext_resource type="AudioStream" uid="uid://btpl7j4lk4rp" path="res://Assets/laser_sound.wav" id="4_x2i0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aot54"]
+size = Vector2(4, 3.5)
+
+[node name="Laser" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_velocity = Vector2(200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xv4do")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aot54")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(9.53674e-08, 4.76837e-07)
+scale = Vector2(0.2, 0.2)
+
+[node name="EffectCreator" parent="." instance=ExtResource("2_4hgou")]
+EFFECT_SCENE = ExtResource("3_26kew")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x2i0p")
+autoplay = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]

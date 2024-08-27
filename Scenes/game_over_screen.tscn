@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://c48r6jfbq3cdk"]
+
+[ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="1_da62y"]
+[ext_resource type="LabelSettings" uid="uid://bv6bqpwpd82yn" path="res://Assets/label_setttings.tres" id="1_f7i5s"]
+[ext_resource type="PackedScene" uid="uid://c344br4ghx2sl" path="res://Scenes/star_particles.tscn" id="2_as0a6"]
+[ext_resource type="Script" path="res://Scripts/star_particles.gd" id="3_y4tl6"]
+
+[node name="GameOverScreen" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_da62y")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -19.5
+offset_right = 33.0
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = ExtResource("1_f7i5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -36.0
+offset_right = 138.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press escape to return to the main menu"
+label_settings = ExtResource("1_f7i5s")
+vertical_alignment = 1
+
+[node name="HighscoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = 4.5
+offset_right = 28.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Highscore:"
+label_settings = ExtResource("1_f7i5s")
+
+[node name="StarParticles" parent="." instance=ExtResource("2_as0a6")]
+script = ExtResource("3_y4tl6")
